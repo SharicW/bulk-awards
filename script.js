@@ -1,4 +1,4 @@
-// ================= RESTORE SESSION =================
+// RESTORE SESSION
 
 const savedUid = localStorage.getItem("discord_uid");
 const savedName = localStorage.getItem("discord_name");
@@ -12,7 +12,7 @@ if (savedUid && savedName) {
   }
 }
 
-// ================= DISCORD AUTH =================
+// DISCORD AUTH
 
 const REDIRECT_URI = "https://sharicw.github.io/bulk-awards/";
 
@@ -26,14 +26,14 @@ const DISCORD_LOGIN_URL =
 function loginDiscord() {
   const uid = localStorage.getItem("discord_uid");
   if (uid) {
-    // уже авторизован — ничего не делаем
+    // already authorized - do nothing
     return;
   }
 
   window.location.href = DISCORD_LOGIN_URL;
 }
 
-// обработка возврата с Discord
+// processing returns with Discord
 const hash = new URLSearchParams(window.location.hash.substring(1));
 const accessToken = hash.get("access_token");
 
@@ -55,7 +55,6 @@ if (accessToken) {
         btn.disabled = true;
       }
 
-      // 🔥 чистим URL от #access_token
       window.history.replaceState({}, document.title, REDIRECT_URI);
     })
     .catch(err => {
@@ -63,7 +62,7 @@ if (accessToken) {
     });
 }
 
-// ================= FIREBASE INIT =================
+// FIREBASE INIT
 
 const firebaseConfig = {
   apiKey: "AIzaSyBTHKpIIhazIcQ1u5yLHpENe38EApDjOjk",
@@ -77,12 +76,12 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-// ================= STATE =================
+// STATE
 
 let selectedCandidate = null;
 let currentNomination = null;
 
-// ================= DATA =================
+// DATA
 
 const nominations = {
   "Bulk King": [
@@ -149,7 +148,7 @@ const nominations = {
   ]
 };
 
-// ================= MODAL =================
+// MODAL
 
 function openVote(nomination) {
   const uid = localStorage.getItem("discord_uid");
@@ -215,7 +214,7 @@ function closeModal() {
   if (modal) modal.classList.add("hidden");
 }
 
-// ================= SUBMIT VOTE =================
+// SUBMIT VOTE
 
 async function submitVote() {
   if (!selectedCandidate) {
@@ -254,13 +253,13 @@ async function submitVote() {
   }
 }
 
-// ================= STARS (FIXED FOREVER) =================
+// STARS
 
 const starsLayer = document.querySelector(".stars-layer");
 const STAR_COUNT = 620;
 const stars = [];
 
-// равномерная сетка
+// grid
 const cols = Math.floor(Math.sqrt(STAR_COUNT * (window.innerWidth / window.innerHeight)));
 const rows = Math.floor(STAR_COUNT / cols);
 
@@ -274,7 +273,7 @@ for (let y = 0; y < rows; y++) {
     star.className = "star";
 
     const size = Math.random() * 2.2 + 0.8;
-    const duration = Math.random() * 25 + 20; // 20–45 секунд
+    const duration = Math.random() * 25 + 20; // 20–45 sec
     const delay = Math.random() * 30;
 
     star.style.animationDuration = `${duration}s`;
@@ -308,7 +307,6 @@ for (let y = 0; y < rows; y++) {
   }
 }
 
-// автодрейф (БЕЗ transform!)
 function animateStars() {
   stars.forEach(s => {
     s.x += s.vx;
@@ -328,7 +326,7 @@ function animateStars() {
 
 animateStars();
 
-// мягкий параллакс
+// soft parallax
 document.addEventListener("mousemove", e => {
   const x = (e.clientX / window.innerWidth - 0.5) * 10;
   const y = (e.clientY / window.innerHeight - 0.5) * 10;
@@ -336,9 +334,9 @@ document.addEventListener("mousemove", e => {
   starsLayer.style.transform = `translate(${x}px, ${y}px)`;
 });
 
-// ================= COUNTDOWN TIMER =================
+// COUNTDOWN TIMER
 
-// 1 января 2026, 23:00 МСК = 20:00 UTC
+// 1 jan 20:00 UTC
 const targetDate = new Date(Date.UTC(2026, 0, 1, 20, 0, 0));
 const countdownEl = document.getElementById("countdown");
 
@@ -368,6 +366,7 @@ function updateCountdown() {
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
+
 
 
 
