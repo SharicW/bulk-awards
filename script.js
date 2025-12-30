@@ -1,3 +1,17 @@
+// ================= RESTORE SESSION =================
+
+const savedUid = localStorage.getItem("discord_uid");
+const savedName = localStorage.getItem("discord_name");
+
+if (savedUid && savedName) {
+  const btn = document.querySelector(".discord-btn");
+  if (btn) {
+    btn.innerText = `Connected: ${savedName}`;
+    btn.classList.add("connected");
+    btn.disabled = true;
+  }
+}
+
 // ================= DISCORD AUTH =================
 
 const REDIRECT_URI = "https://sharicw.github.io/bulk-awards/";
@@ -35,7 +49,7 @@ if (accessToken) {
         btn.disabled = true;
       }
 
-      // чистим URL
+      // 🔥 чистим URL от #access_token
       window.history.replaceState({}, document.title, REDIRECT_URI);
     })
     .catch(err => {
@@ -348,6 +362,7 @@ function updateCountdown() {
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
+
 
 
 
