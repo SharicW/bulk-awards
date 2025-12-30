@@ -43,20 +43,6 @@ if (accessToken) {
     });
 }
 
-if (discordUid) {
-  localStorage.setItem("discord_uid", discordUid);
-  localStorage.setItem("discord_name", discordName);
-
-  const btn = document.querySelector(".discord-btn");
-  if (btn) {
-    btn.innerText = `Connected: ${discordName}`;
-    btn.classList.add("connected"); // ← АНИМАЦИЯ
-    btn.disabled = true;
-  }
-
-  window.history.replaceState({}, document.title, "/");
-}
-
 // ================= FIREBASE INIT =================
 
 const firebaseConfig = {
@@ -362,6 +348,7 @@ function updateCountdown() {
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
+
 
 
 
