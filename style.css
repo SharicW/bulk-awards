@@ -11,7 +11,7 @@ body {
   background: #000;
 }
 
-/* ФОН
+/* bg
 body::before {
   content: "";
   position: fixed;
@@ -20,7 +20,7 @@ body::before {
   z-index: -2;
 } */
 
-/* ВИНЬЕТКА */
+/* VIGNETTE */
 body::after {
   content: "";
   position: fixed;
@@ -45,7 +45,7 @@ header {
 }
 
 .logo img {
-  height: 50px;      /* подгони под дизайн */
+  height: 50px;
   width: auto;
   display: block;
 }
@@ -148,7 +148,7 @@ footer {
   opacity: 0.4;
 }
 
-/* ========== MODAL ========== */
+/*  MODAL  */
 .modal {
   position: fixed;
   inset: 0;
@@ -263,7 +263,7 @@ footer {
   gap: 24px;
 }
 
-/* чтобы карточки не были слишком узкими */
+/* to prevent the cards from being too narrow */
 .grid-5 .card {
   width: 220px;
 }
@@ -280,7 +280,7 @@ footer {
   }
 }
 
-/* ================= STARS ================= */
+/*  STARS  */
 
 .stars-layer {
   position: fixed;
@@ -319,20 +319,19 @@ footer {
   border-radius: 50%;
   background: white;
 
-  /* мягкое свечение, но без перебора */
+  /* soft glow */
   box-shadow:
     0 0 2px rgba(255,255,255,0.5),
     0 0 5px rgba(255,255,255,0.25);
 
   opacity: 0.92;
 
-  /* ВАЖНО: transform только через CSS variables */
   transform: translate(var(--x), var(--y));
 
   animation: breathe linear infinite;
 }
 
-/* ===== DISCORD BUTTON ANIMATION ===== */
+/*  DISCORD BUTTON ANIMATION  */
 
 .discord-btn {
   font-weight: 700;
@@ -343,13 +342,13 @@ footer {
     opacity 0.3s ease;
 }
 
-/* hover до подключения */
+/* hover before connecting */
 .discord-btn:not(:disabled):hover {
   transform: translateY(-1px);
   box-shadow: 0 6px 18px rgba(155, 155, 155, 0.35);
 }
 
-/* состояние "подключено" */
+/* “connected” status */
 .discord-btn.connected {
   background: linear-gradient(135deg, #201d1d, #121111);
   box-shadow:
@@ -359,7 +358,7 @@ footer {
   animation: connectPop 0.6s ease-out;
 }
 
-/* небольшая pop-анимация */
+/* pop animation */
 @keyframes connectPop {
   0% {
     transform: scale(0.95);
@@ -374,19 +373,19 @@ footer {
   }
 }
 
-/* отключённая кнопка */
+/* disabled button discord */
 .discord-btn:disabled {
   cursor: default;
   opacity: 0.85;
 }
 
-/* ===== ADDITIONAL NOMINATIONS FLOAT ANIMATION ===== */
+/*  ADDITIONAL NOMINATIONS FLOAT ANIMATION  */
 
 .additional-nominations .card {
   animation: cardFloat 5s ease-in-out infinite;
 }
 
-/* делаем рассинхрон */
+/*  desynchronization */
 .additional-nominations .card:nth-child(1) { animation-delay: 0s; }
 .additional-nominations .card:nth-child(2) { animation-delay: 0.4s; }
 .additional-nominations .card:nth-child(3) { animation-delay: 0.8s; }
@@ -411,17 +410,17 @@ footer {
   }
 }
 
-/* ===== MAIN NOMINATIONS GLOW ===== */
+/*  MAIN NOMINATIONS GLOW  */
 
 .main-nominations {
   position: relative;
 }
 
-/* свечение позади карточек */
+/* glow behind the cards */
 .main-nominations::before {
   content: "";
   position: absolute;
-  inset: -120px -80px; /* размер ореола */
+  inset: -120px -80px;
   z-index: -1;
 
   background: radial-gradient(
@@ -438,7 +437,7 @@ footer {
   animation: mainGlow 12s ease-in-out infinite;
 }
 
-/* плавное "дыхание" свечения */
+/* glow “breath” */
 @keyframes mainGlow {
   0% {
     opacity: 0.6;
@@ -454,7 +453,7 @@ footer {
   }
 }
 
-/* ===== COUNTDOWN TIMER (BOTTOM) ===== */
+/*  COUNTDOWN TIMER */
 
 .countdown {
   text-align: center;
@@ -496,7 +495,7 @@ footer {
   margin-top: 4px;
 }
 
-/* ===== TWITTER BUTTON ON CANDIDATE ===== */
+/*  TWITTER BUTTON ON CANDIDATE  */
 
 .candidate {
   position: relative;
@@ -530,4 +529,5 @@ footer {
   background: rgba(255,255,255,0.25);
   transform: scale(1.1);
 }
+
 
