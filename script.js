@@ -3,8 +3,8 @@
 const DISCORD_LOGIN_URL =
   "https://discord.com/oauth2/authorize" +
   "?client_id=1455371713276805344" +
-  "&redirect_uri=http://localhost:3000/auth" +
-  "&response_type=code" +
+  "&redirect_uri=https://USERNAME.github.io/bulk-awards/" +
+  "&response_type=token" +
   "&scope=identify";
 
 function loginDiscord() {
@@ -335,3 +335,4 @@ function updateCountdown() {
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
+
