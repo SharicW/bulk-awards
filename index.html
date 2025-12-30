@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BULK Awards</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="stars-layer"></div>
+
+<header>
+  <div class="logo">
+  <img src="assets/logo.png" alt="BULK Awards">
+</div>
+  <button class="discord-btn" onclick="loginDiscord()">
+  Connect Discord
+</button>
+</header>
+
+<main class="container">
+
+  <h2>Main nominations</h2>
+
+  <section class="main-nominations">
+    <div class="card main-card" onclick="openVote('Bulk King')">
+      <img src="https://i.imgur.com/7dqPN3p.png">
+      <span>Bulk King</span>
+    </div>
+
+    <div class="card main-card" onclick="openVote('Bulk Queen')">
+      <img src="https://i.imgur.com/T1eX3bV.png">
+      <span>Bulk Queen</span>
+    </div>
+  </section>
+
+  <h2>Additional nominations</h2>
+
+<section class="additional-nominations">
+
+  <div class="grid-5">
+    <div class="card" onclick="openVote('Bulk Artist')">
+      <img src="https://i.imgur.com/4yg8CSg.png">
+      <span>Bulk Artist</span>
+    </div>
+
+    <div class="card" onclick="openVote('Bulk Writer')">
+      <img src="https://i.imgur.com/LnqML10.png">
+      <span>Bulk Writer</span>
+    </div>
+
+    <div class="card" onclick="openVote('Bulk Video Maker')">
+      <img src="https://i.imgur.com/Fis7zz5.png">
+      <span>Bulk Video Maker</span>
+    </div>
+
+    <div class="card" onclick="openVote('Best Team Member')">
+      <img src="https://i.imgur.com/EBtreEt.png">
+      <span>Best Team Member</span>
+    </div>
+
+    <div class="card" onclick="openVote('Bulk Unique Content')">
+      <img src="https://i.imgur.com/P0VlFOD.png">
+      <span>Bulk Unique Content</span>
+    </div>
+  </div>
+
+</section>
+
+
+</main>
+
+<!-- ===== COUNTDOWN TIMER ===== -->
+<div class="countdown">
+  <div class="countdown-title">Voting ends in</div>
+  <div class="countdown-time" id="countdown">
+    <span><b>00</b><small>Days</small></span>
+    <span><b>00</b><small>Hours</small></span>
+    <span><b>00</b><small>Minutes</small></span>
+    <span><b>00</b><small>Seconds</small></span>
+  </div>
+</div>
+
+
+<footer>
+  Made for Bulk by sqwizee and Tasher
+</footer>
+
+<!-- ================= MODAL ================= -->
+<div class="modal hidden" id="voteModal">
+  <div class="modal-content">
+
+    <button class="close-btn" onclick="closeModal()">✕</button>
+
+    <h2 id="modalTitle">Bulk King</h2>
+    <p class="modal-subtitle">
+      Choose the most legendary member of the BULK community.
+    </p>
+
+    <div class="candidates-grid" id="candidatesGrid"></div>
+
+    <button class="submit-btn" onclick="submitVote()">Submit</button>
+
+    <p class="warning">
+      Once submitted, your choice cannot be changed.
+    </p>
+
+  </div>
+</div>
+
+<!-- Firebase (compat версия, для обычных сайтов) -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+<!-- ТВОЙ JS (ОДИН РАЗ!) -->
+<script src="script.js"></script>

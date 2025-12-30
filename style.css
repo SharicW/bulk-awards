@@ -1,0 +1,521 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Inter, Arial, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  color: white;
+  background: #000;
+}
+
+/* ФОН
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("assets/bg.png") center top / contain no-repeat;
+  z-index: -2;
+} */
+
+/* ВИНЬЕТКА */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(0, 0, 0, 0) 25%,
+      rgba(0, 0, 0, 0.4) 50%,
+      rgba(0, 0, 0, 0.85) 100%
+    );
+}
+
+/* HEADER */
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+}
+
+.logo img {
+  height: 50px;      /* подгони под дизайн */
+  width: auto;
+  display: block;
+}
+
+.discord-btn {
+  background: #201d1d;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+
+  font-weight: 700;
+}
+
+/* MAIN */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+}
+
+h2 {
+  margin: 40px 0 20px;
+}
+
+.hint {
+  opacity: 0.6;
+  margin-bottom: 20px;
+}
+
+/* CARDS */
+.main-nominations {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  
+}
+
+.card {
+  width: 260px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #111;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+  cursor: pointer;
+  transition: transform .3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card span {
+  display: block;
+  padding: 14px;
+  font-weight: 600;
+}
+
+.main-card {
+  width: 300px;
+}
+
+/* CAROUSEL */
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 20px;
+  overflow: hidden;
+  width: 840px;
+}
+
+.arrow {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  margin: 40px 0 20px;
+  opacity: 0.4;
+}
+
+/* ========== MODAL ========== */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.69);
+  backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.hidden {
+  display: none;
+}
+
+.modal-content {
+  width: 900px;
+  max-width: 95%;
+  background: radial-gradient(circle at top, #1A1718, #1b1b1b00);
+  border-radius: 28px;
+  padding: 40px;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  right: 24px;
+  top: 20px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.modal-subtitle {
+  opacity: 0.7;
+  margin: 10px 0 30px;
+}
+
+.candidates-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.candidate {
+  background: rgba(255,255,255,0.05);
+  border-radius: 20px;
+  padding: 12px;
+  cursor: pointer;
+  transition: 0.25s;
+  border: 2px solid transparent;
+}
+
+.candidate img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.candidate span {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.candidate:hover {
+  transform: translateY(-6px);
+}
+
+.candidate.selected {
+  border-color: #FFFF;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.submit-btn {
+  margin-top: 30px;
+  width: 100%;
+  padding: 16px;
+  font-size: 18px;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(90deg, #111111, #101010);
+  color: white;
+  cursor: pointer;
+}
+
+.warning {
+  text-align: center;
+  font-size: 13px;
+  opacity: 0.6;
+  margin-top: 14px;
+}
+
+.discord-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.additional-nominations {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.grid-5 {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+}
+
+/* чтобы карточки не были слишком узкими */
+.grid-5 .card {
+  width: 220px;
+}
+
+@media (max-width: 1200px) {
+  .grid-5 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-5 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ================= STARS ================= */
+
+.stars-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: white;
+
+  /* мягкое свечение, но без перебора */
+  box-shadow:
+    0 0 2px rgba(255,255,255,0.5),
+    0 0 5px rgba(255,255,255,0.25);
+
+  opacity: 0.92;
+
+  /* ВАЖНО: transform только через CSS variables */
+  transform: translate(var(--x), var(--y));
+
+  animation: breathe linear infinite;
+}
+
+/* МЕДЛЕННОЕ "ДЫХАНИЕ" */
+@keyframes breathe {
+  0% {
+    opacity: 0.78;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0.78;
+  }
+}
+
+/* ===== DISCORD BUTTON ANIMATION ===== */
+
+.discord-btn {
+  font-weight: 700;
+  transition: 
+    background 0.3s ease,
+    box-shadow 0.4s ease,
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+/* hover до подключения */
+.discord-btn:not(:disabled):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(155, 155, 155, 0.35);
+}
+
+/* состояние "подключено" */
+.discord-btn.connected {
+  background: linear-gradient(135deg, #201d1d, #121111);
+  box-shadow:
+    0 0 12px rgba(105, 105, 105, 0.6),
+    0 0 24px rgba(153, 153, 153, 0.4);
+  transform: scale(1.05);
+  animation: connectPop 0.6s ease-out;
+}
+
+/* небольшая pop-анимация */
+@keyframes connectPop {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.6;
+  }
+  60% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+/* отключённая кнопка */
+.discord-btn:disabled {
+  cursor: default;
+  opacity: 0.85;
+}
+
+/* ===== ADDITIONAL NOMINATIONS FLOAT ANIMATION ===== */
+
+.additional-nominations .card {
+  animation: cardFloat 5s ease-in-out infinite;
+}
+
+/* делаем рассинхрон */
+.additional-nominations .card:nth-child(1) { animation-delay: 0s; }
+.additional-nominations .card:nth-child(2) { animation-delay: 0.4s; }
+.additional-nominations .card:nth-child(3) { animation-delay: 0.8s; }
+.additional-nominations .card:nth-child(4) { animation-delay: 1.2s; }
+.additional-nominations .card:nth-child(5) { animation-delay: 1.6s; }
+
+@keyframes cardFloat {
+  0% {
+    transform: translateY(0);
+  }
+
+  5% {
+    transform: translateY(-6px);
+  }
+
+  10% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* ===== MAIN NOMINATIONS GLOW ===== */
+
+.main-nominations {
+  position: relative;
+}
+
+/* свечение позади карточек */
+.main-nominations::before {
+  content: "";
+  position: absolute;
+  inset: -120px -80px; /* размер ореола */
+  z-index: -1;
+
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 0.25) 0%,
+    rgba(255, 255, 255, 0.15) 30%,
+    rgba(255, 255, 255, 0.05) 55%,
+    rgba(255, 255, 255, 0.0) 70%
+  );
+
+  filter: blur(40px);
+  opacity: 0.8;
+
+  animation: mainGlow 12s ease-in-out infinite;
+}
+
+/* плавное "дыхание" свечения */
+@keyframes mainGlow {
+  0% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+}
+
+/* ===== COUNTDOWN TIMER (BOTTOM) ===== */
+
+.countdown {
+  text-align: center;
+  margin: 60px auto 30px;
+  opacity: 0.85;
+}
+
+.countdown-title {
+  font-size: 13px;
+  letter-spacing: 2px;
+  opacity: 0.6;
+  margin-bottom: 14px;
+}
+
+.countdown-time {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.countdown-time span {
+  background: rgba(255,255,255,0.06);
+  border-radius: 14px;
+  padding: 12px 14px;
+  min-width: 80px;
+}
+
+.countdown-time b {
+  display: block;
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.countdown-time small {
+  display: block;
+  font-size: 10px;
+  opacity: 0.6;
+  margin-top: 4px;
+}
+
+/* ===== TWITTER BUTTON ON CANDIDATE ===== */
+
+.candidate {
+  position: relative;
+}
+
+.twitter-btn {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+
+  width: 28px;
+  height: 28px;
+
+  background: rgba(255,255,255,0.12);
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 14px;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+
+  backdrop-filter: blur(6px);
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.twitter-btn:hover {
+  background: rgba(255,255,255,0.25);
+  transform: scale(1.1);
+}
