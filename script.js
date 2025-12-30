@@ -24,6 +24,12 @@ const DISCORD_LOGIN_URL =
   "&scope=identify";
 
 function loginDiscord() {
+  const uid = localStorage.getItem("discord_uid");
+  if (uid) {
+    // уже авторизован — ничего не делаем
+    return;
+  }
+
   window.location.href = DISCORD_LOGIN_URL;
 }
 
@@ -362,6 +368,7 @@ function updateCountdown() {
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
+
 
 
 
