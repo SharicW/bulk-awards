@@ -14,9 +14,34 @@ function loginDiscord() {
 }
 
 // обработка возврата с Discord
-const params = new URLSearchParams(window.location.search);
-const discordUid = params.get("uid");
-const discordName = params.get("name");
+const hash = new URLSearchParams(window.location.hash.substring(1));
+const accessToken = hash.get("access_token");
+
+if (accessToken) {
+  fetch("https://discord.com/api/users/@me", {
+    headers: {
+      Authorization: `Bearer ${accessToken}`
+    }
+  })
+    .then(res => res.json())
+    .then(user => {
+      localStorage.setItem("discord_uid", user.id);
+      localStorage.setItem("discord_name", user.username);
+
+      const btn = document.querySelector(".discord-btn");
+      if (btn) {
+        btn.innerText = `Connected: ${user.username}`;
+        btn.classList.add("connected");
+        btn.disabled = true;
+      }
+
+      // чистим URL
+      window.history.replaceState({}, document.title, REDIRECT_URI);
+    })
+    .catch(err => {
+      console.error("Discord auth error:", err);
+    });
+}
 
 if (discordUid) {
   localStorage.setItem("discord_uid", discordUid);
@@ -337,6 +362,7 @@ function updateCountdown() {
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
+
 
 
 
