@@ -11,16 +11,6 @@ body {
   background: #000;
 }
 
-/* bg
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: url("assets/bg.png") center top / contain no-repeat;
-  z-index: -2;
-} */
-
-/* VIGNETTE */
 body::after {
   content: "";
   position: fixed;
@@ -37,7 +27,6 @@ body::after {
     );
 }
 
-/* HEADER */
 header {
   display: flex;
   justify-content: space-between;
@@ -50,18 +39,7 @@ header {
   display: block;
 }
 
-.discord-btn {
-  background: #201d1d;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 20px;
-  color: white;
-  cursor: pointer;
 
-  font-weight: 700;
-}
-
-/* MAIN */
 .container {
   max-width: 1200px;
   margin: auto;
@@ -77,7 +55,6 @@ h2 {
   margin-bottom: 20px;
 }
 
-/* CARDS */
 .main-nominations {
   display: flex;
   justify-content: center;
@@ -111,11 +88,55 @@ h2 {
   font-weight: 600;
 }
 
+.winner-info {
+  padding: 0 14px 14px;
+  text-align: center;
+}
+
+.winner-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #FFD700;
+  margin-bottom: 8px;
+}
+
+.winner-twitter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 50%;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.winner-twitter:hover {
+  background: rgba(255,255,255,0.25);
+  transform: scale(1.1);
+}
+
+.has-winner {
+  position: relative;
+}
+
+.has-winner::before {
+  content: "🏆";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  z-index: 10;
+}
+
 .main-card {
   width: 300px;
 }
 
-/* CAROUSEL */
 .carousel {
   display: flex;
   align-items: center;
@@ -141,115 +162,13 @@ h2 {
   cursor: pointer;
 }
 
-/* FOOTER */
 footer {
   text-align: center;
   margin: 40px 0 20px;
   opacity: 0.4;
 }
 
-/*  MODAL  */
-.modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.69);
-  backdrop-filter: blur(12px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-}
 
-.hidden {
-  display: none;
-}
-
-.modal-content {
-  width: 900px;
-  max-width: 95%;
-  background: radial-gradient(circle at top, #1A1718, #1b1b1b00);
-  border-radius: 28px;
-  padding: 40px;
-  position: relative;
-}
-
-.close-btn {
-  position: absolute;
-  right: 24px;
-  top: 20px;
-  background: none;
-  border: none;
-  color: white;
-  font-size: 22px;
-  cursor: pointer;
-}
-
-.modal-subtitle {
-  opacity: 0.7;
-  margin: 10px 0 30px;
-}
-
-.candidates-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.candidate {
-  background: rgba(255,255,255,0.05);
-  border-radius: 20px;
-  padding: 12px;
-  cursor: pointer;
-  transition: 0.25s;
-  border: 2px solid transparent;
-}
-
-.candidate img {
-  width: 100%;
-  height: 170px;
-  object-fit: cover;
-  border-radius: 14px;
-}
-
-.candidate span {
-  display: block;
-  text-align: center;
-  margin-top: 10px;
-  font-weight: 600;
-}
-
-.candidate:hover {
-  transform: translateY(-6px);
-}
-
-.candidate.selected {
-  border-color: #FFFF;
-  background: rgba(255, 255, 255, 0.15);
-}
-
-.submit-btn {
-  margin-top: 30px;
-  width: 100%;
-  padding: 16px;
-  font-size: 18px;
-  border-radius: 30px;
-  border: none;
-  background: linear-gradient(90deg, #111111, #101010);
-  color: white;
-  cursor: pointer;
-}
-
-.warning {
-  text-align: center;
-  font-size: 13px;
-  opacity: 0.6;
-  margin-top: 14px;
-}
-
-.discord-btn:disabled {
-  opacity: 0.6;
-  cursor: default;
-}
 
 .additional-nominations {
   display: flex;
@@ -263,7 +182,6 @@ footer {
   gap: 24px;
 }
 
-/* to prevent the cards from being too narrow */
 .grid-5 .card {
   width: 220px;
 }
@@ -280,7 +198,6 @@ footer {
   }
 }
 
-/*  STARS  */
 
 .stars-layer {
   position: fixed;
@@ -319,7 +236,7 @@ footer {
   border-radius: 50%;
   background: white;
 
-  /* soft glow */
+
   box-shadow:
     0 0 2px rgba(255,255,255,0.5),
     0 0 5px rgba(255,255,255,0.25);
@@ -331,61 +248,12 @@ footer {
   animation: breathe linear infinite;
 }
 
-/*  DISCORD BUTTON ANIMATION  */
 
-.discord-btn {
-  font-weight: 700;
-  transition: 
-    background 0.3s ease,
-    box-shadow 0.4s ease,
-    transform 0.3s ease,
-    opacity 0.3s ease;
-}
-
-/* hover before connecting */
-.discord-btn:not(:disabled):hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(155, 155, 155, 0.35);
-}
-
-/* “connected” status */
-.discord-btn.connected {
-  background: linear-gradient(135deg, #201d1d, #121111);
-  box-shadow:
-    0 0 12px rgba(105, 105, 105, 0.6),
-    0 0 24px rgba(153, 153, 153, 0.4);
-  transform: scale(1.05);
-  animation: connectPop 0.6s ease-out;
-}
-
-/* pop animation */
-@keyframes connectPop {
-  0% {
-    transform: scale(0.95);
-    opacity: 0.6;
-  }
-  60% {
-    transform: scale(1.08);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1.05);
-  }
-}
-
-/* disabled button discord */
-.discord-btn:disabled {
-  cursor: default;
-  opacity: 0.85;
-}
-
-/*  ADDITIONAL NOMINATIONS FLOAT ANIMATION  */
 
 .additional-nominations .card {
   animation: cardFloat 5s ease-in-out infinite;
 }
 
-/*  desynchronization */
 .additional-nominations .card:nth-child(1) { animation-delay: 0s; }
 .additional-nominations .card:nth-child(2) { animation-delay: 0.4s; }
 .additional-nominations .card:nth-child(3) { animation-delay: 0.8s; }
@@ -410,13 +278,11 @@ footer {
   }
 }
 
-/*  MAIN NOMINATIONS GLOW  */
 
 .main-nominations {
   position: relative;
 }
 
-/* glow behind the cards */
 .main-nominations::before {
   content: "";
   position: absolute;
@@ -437,7 +303,6 @@ footer {
   animation: mainGlow 12s ease-in-out infinite;
 }
 
-/* glow “breath” */
 @keyframes mainGlow {
   0% {
     opacity: 0.6;
@@ -453,81 +318,26 @@ footer {
   }
 }
 
-/*  COUNTDOWN TIMER */
 
-.countdown {
+.ceremony-info {
   text-align: center;
   margin: 60px auto 30px;
   opacity: 0.85;
 }
 
-.countdown-title {
-  font-size: 13px;
-  letter-spacing: 2px;
-  opacity: 0.6;
-  margin-bottom: 14px;
-}
-
-.countdown-time {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.countdown-time span {
-  background: rgba(255,255,255,0.06);
-  border-radius: 14px;
-  padding: 12px 14px;
-  min-width: 80px;
-}
-
-.countdown-time b {
-  display: block;
-  font-size: 26px;
-  font-weight: 800;
-}
-
-.countdown-time small {
-  display: block;
-  font-size: 10px;
-  opacity: 0.6;
-  margin-top: 4px;
-}
-
-/*  TWITTER BUTTON ON CANDIDATE  */
-
-.candidate {
-  position: relative;
-}
-
-.twitter-btn {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-
-  width: 28px;
-  height: 28px;
-
-  background: rgba(255,255,255,0.12);
-  border-radius: 50%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 14px;
+.ceremony-title {
+  font-size: 24px;
   font-weight: 700;
-  color: white;
-  text-decoration: none;
-
-  backdrop-filter: blur(6px);
-  transition: background 0.25s ease, transform 0.25s ease;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  color: #FFD700;
 }
 
-.twitter-btn:hover {
-  background: rgba(255,255,255,0.25);
-  transform: scale(1.1);
+.ceremony-subtitle {
+  font-size: 16px;
+  opacity: 0.7;
+  letter-spacing: 1px;
 }
+
 
 
