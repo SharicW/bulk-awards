@@ -21,55 +21,57 @@
   <div class="logo">
   <img src="assets/logo.png" alt="BULK Awards">
 </div>
-  <button class="discord-btn" onclick="loginDiscord()">
-  Connect Discord
-</button>
 </header>
 
 <main class="container">
 
-  <h2>Main nominations</h2>
+  <h2>Winners</h2>
 
   <section class="main-nominations">
-    <div class="card main-card" onclick="openVote('Bulk King')">
+    <div class="card main-card winner-card" data-nomination="Bulk King">
       <img src="https://i.imgur.com/7dqPN3p.png">
       <span>Bulk King</span>
+      <div class="winner-info"></div>
     </div>
 
-    <div class="card main-card" onclick="openVote('Bulk Queen')">
+    <div class="card main-card winner-card" data-nomination="Bulk Queen">
       <img src="https://i.imgur.com/T1eX3bV.png">
       <span>Bulk Queen</span>
+      <div class="winner-info"></div>
     </div>
   </section>
-
-  <h2>Additional nominations</h2>
 
 <section class="additional-nominations">
 
   <div class="grid-5">
-    <div class="card" onclick="openVote('Bulk Artist')">
+    <div class="card winner-card" data-nomination="Bulk Artist">
       <img src="https://i.imgur.com/4yg8CSg.png">
       <span>Bulk Artist</span>
+      <div class="winner-info"></div>
     </div>
 
-    <div class="card" onclick="openVote('Bulk Writer')">
+    <div class="card winner-card" data-nomination="Bulk Writer">
       <img src="https://i.imgur.com/LnqML10.png">
       <span>Bulk Writer</span>
+      <div class="winner-info"></div>
     </div>
 
-    <div class="card" onclick="openVote('Bulk Video Maker')">
+    <div class="card winner-card" data-nomination="Bulk Video Maker">
       <img src="https://i.imgur.com/Fis7zz5.png">
       <span>Bulk Video Maker</span>
+      <div class="winner-info"></div>
     </div>
 
-    <div class="card" onclick="openVote('Best Team Member')">
+    <div class="card winner-card" data-nomination="Best Team Member">
       <img src="https://i.imgur.com/EBtreEt.png">
       <span>Best Team Member</span>
+      <div class="winner-info"></div>
     </div>
 
-    <div class="card" onclick="openVote('Bulk Unique Content')">
+    <div class="card winner-card" data-nomination="Bulk Unique Content">
       <img src="https://i.imgur.com/P0VlFOD.png">
       <span>Bulk Unique Content</span>
+      <div class="winner-info"></div>
     </div>
   </div>
 
@@ -78,15 +80,9 @@
 
 </main>
 
-<!-- COUNTDOWN TIME -->
-<div class="countdown">
-  <div class="countdown-title">Voting ends in</div>
-  <div class="countdown-time" id="countdown">
-    <span><b>00</b><small>Days</small></span>
-    <span><b>00</b><small>Hours</small></span>
-    <span><b>00</b><small>Minutes</small></span>
-    <span><b>00</b><small>Seconds</small></span>
-  </div>
+<div class="ceremony-info">
+  <div class="ceremony-title">BULK Awards 2025</div>
+  <div class="ceremony-subtitle">Celebrating the best of our community</div>
 </div>
 
 
@@ -94,31 +90,7 @@
   Made for Bulk by sqwizee and Tasher
 </footer>
 
-<!-- MODAL -->
-<div class="modal hidden" id="voteModal">
-  <div class="modal-content">
 
-    <button class="close-btn" onclick="closeModal()">✕</button>
-
-    <h2 id="modalTitle">Bulk King</h2>
-    <p class="modal-subtitle">
-      Select your favorite members of the Bulk community!
-    </p>
-
-    <div class="candidates-grid" id="candidatesGrid"></div>
-
-    <button class="submit-btn" onclick="submitVote()">Submit</button>
-
-    <p class="warning">
-      Once submitted, your choice cannot be changed.
-    </p>
-
-  </div>
-</div>
-
-<!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
 <script src="script.js"></script>
 
